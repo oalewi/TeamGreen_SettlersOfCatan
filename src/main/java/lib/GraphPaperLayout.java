@@ -55,10 +55,7 @@ public class GraphPaperLayout implements LayoutManager2{
      * Set the size of the graph paper in logical units (n x m)
      */
     public void setGridSize( Dimension d ) {
-        setGridSize( d.width, d.height );
-    }
-
-    /**
+        setGri
      * Set the size of the graph paper in logical units (n x m)
      */
     public void setGridSize( int width, int height ) {
@@ -66,7 +63,10 @@ public class GraphPaperLayout implements LayoutManager2{
     }
 
     public void setConstraints(Component comp, Rectangle constraints) {
-        compTable.put(comp, new Rectangle(constraints));
+        compTable.put(comp, new Rectangle(constraints));dSize( d.width, d.height );
+    }
+
+    /**
     }
 
     /**
