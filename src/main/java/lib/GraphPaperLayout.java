@@ -1,11 +1,74 @@
+/*
+ * Code below taken from the Java Tutorials
+ * Following link: http://da2i.univ-lille1.fr/doc/tutorial-java/uiswing/layout/examples/GraphPaperLayout.java
+ *
+Copyright (c) 2014, Oracle America, Inc.
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice, this
+   list of conditions and the following disclaimer.
+2. Redistributions in binary form must reproduce the above copyright notice,
+   this list of conditions and the following disclaimer in the documentation
+   and/or other materials provided with the distribution.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR
+ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+The views and conclusions contained in the software and documentation are those
+of the authors and should not be interpreted as representing official policies,
+either expressed or implied, of the FreeBSD Project.
+ */
+
 package lib;
 
 import java.awt.*;
 import java.util.Hashtable;
+
 /**
- * Created by Olusegun on 9/27/2016.
+ * The <code>GraphPaperLayout</code> class is a layout manager that
+ * lays out a container's components in a rectangular grid, similar
+ * to GridLayout.  Unlike GridLayout, however, components can take
+ * up multiple rows and/or columns.  The layout manager acts as a
+ * sheet of graph paper.  When a component is added to the layout
+ * manager, the location and relative size of the component are
+ * simply supplied by the constraints as a Rectangle.
+ * <p><code><pre>
+ * import java.awt.*;
+ * import java.applet.Applet;
+ * public class ButtonGrid extends Applet {
+ *     public void init() {
+ *         setLayout(new GraphPaperLayout(new Dimension(5,5)));
+ *         // Add a 1x1 Rect at (0,0)
+ *         add(new Button("1"), new Rectangle(0,0,1,1));
+ *         // Add a 2x1 Rect at (2,0)
+ *         add(new Button("2"), new Rectangle(2,0,2,1));
+ *         // Add a 1x2 Rect at (1,1)
+ *         add(new Button("3"), new Rectangle(1,1,1,2));
+ *         // Add a 2x2 Rect at (3,2)
+ *         add(new Button("4"), new Rectangle(3,2,2,2));
+ *         // Add a 1x1 Rect at (0,4)
+ *         add(new Button("5"), new Rectangle(0,4,1,1));
+ *         // Add a 1x2 Rect at (2,3)
+ *         add(new Button("6"), new Rectangle(2,3,1,2));
+ *     }
+ * }
+ * </pre></code>
+ *
+ * @author      Michael Martak
  */
-public class GraphPaperLayout implements LayoutManager2{
+
+public class GraphPaperLayout implements LayoutManager2 {
     int hgap;            //horizontal gap
     int vgap;            //vertical gap
     Dimension gridSize;  //grid size in logical units (n x m)
@@ -55,7 +118,10 @@ public class GraphPaperLayout implements LayoutManager2{
      * Set the size of the graph paper in logical units (n x m)
      */
     public void setGridSize( Dimension d ) {
-        setGri
+        setGridSize( d.width, d.height );
+    }
+
+    /**
      * Set the size of the graph paper in logical units (n x m)
      */
     public void setGridSize( int width, int height ) {
@@ -63,10 +129,7 @@ public class GraphPaperLayout implements LayoutManager2{
     }
 
     public void setConstraints(Component comp, Rectangle constraints) {
-        compTable.put(comp, new Rectangle(constraints));dSize( d.width, d.height );
-    }
-
-    /**
+        compTable.put(comp, new Rectangle(constraints));
     }
 
     /**

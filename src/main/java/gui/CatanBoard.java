@@ -1347,4 +1347,4 @@ import game.*;
             capitol = true;
         }
     }
-}
+
